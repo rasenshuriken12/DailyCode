@@ -1,7 +1,7 @@
 class Solution {
 public:
     int getCount(int n, int d) {
-        // code here
+
         int l = 1;
         int r = n;
         while (l <= r) {
