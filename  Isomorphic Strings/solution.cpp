@@ -49,3 +49,58 @@ class Solution {
     }
 };
 
+/*
+═══════════════════════════════════════════════════════════════
+COMPLEXITY ANALYSIS
+═══════════════════════════════════════════════════════════════
+
+Time Complexity: O(n)
+  - Single pass through both strings
+  - Array access: O(1)
+  - Total: O(n) where n is the length of the strings
+
+Space Complexity: O(1)
+  - hash1: fixed size of 26 (for a-z)
+  - hash2: fixed size of 26 (for a-z)
+  - Total: O(26) = O(1) constant space
+  
+  Note: This is more space-efficient than using HashMaps
+  for bounded character sets.
+
+═══════════════════════════════════════════════════════════════
+
+Why Two Mappings?
+
+Consider: s1 = "ba", s2 = "aa"
+
+With only hash1 forward mapping:
+  - b → a, a → a (looks valid)
+  - Problem: Both 'b' and 'a' map to 'a'!
+
+With both mappings:
+  - hash1: b→a, a→a
+  - hash2: a→b? But we already have a→a (CONFLICT!)
+  - Result: False ✓
+
+═══════════════════════════════════════════════════════════════
+
+DRY RUN Example:
+
+s1 = "egg", s2 = "add"
+
+i=0: ch1='e'(4), ch2='a'(0)
+  - hash1[4] == -1, hash2[0] == -1
+  - Create: hash1[4]=0, hash2[0]=4
+
+i=1: ch1='g'(6), ch2='d'(3)
+  - hash1[6] == -1, hash2[3] == -1
+  - Create: hash1[6]=3, hash2[3]=6
+
+i=2: ch1='g'(6), ch2='d'(3)
+  - hash1[6] == 3 ✓ (matches ch2=3)
+  - Continue
+
+Result: true ✓
+
+═══════════════════════════════════════════════════════════════
+*/
