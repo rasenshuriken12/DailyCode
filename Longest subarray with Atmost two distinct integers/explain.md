@@ -164,18 +164,156 @@ Maximum length = 4
 - `defaultdict` eliminates explicit zero-checking
 - Concise and readable
 
-## Comparison of Implementations
+## Code Implementation Mapping
+
+### C++ Implementation - Sliding Window with Map (Clean Expansion)
+
+**File**: `solution.cpp`
+
+**Key Features**:
+- Uses `map<int, int>` for element frequency tracking
+- **Expand-first approach**: Always expand window with right pointer first
+- While loop to shrink when constraint is violated
+- `maxi` updates happen each iteration after ensuring validity
+
+**Algorithm Flow**:
+1. For each position `j` (right pointer):
+   - Add `arr[j]` to map: `mpp[arr[j]]++`
+   - While distinct count > 2 (constraint violated):
+     - Remove from left: `mpp[arr[i]]--`
+     - Erase if count is 0
+     - Move left pointer: `i++`
+   - Update max after shrinking: `maxi = max(maxi, j - i + 1)`
+
+**Why This Flow**:
+- Simpler logic: expand first, then check/shrink
+- Single loop control structure
+- `mpp.size() > 2` is clean and efficient
+
+**Best For**:
+- C++ competitive programming
+- When you want explicit control over shrinking
+
+### C++ Optimal Solution - Detailed Commentary Version
+
+**File**: `solution_optimal_cpp.cpp`
+
+**Enhanced Features**:
+- Uses `unordered_map<int, int>` (faster hash table)
+- Variable names optimized for clarity: `elementFreq`, `maxLength`
+- Comprehensive inline documentation
+- Step-by-step walkthrough example
+- Detailed explanation of each operation
+- Comparison with Python version
+- Test cases with expected outputs
+
+**Algorithm Flow** (same logic, carefully explained):
+1. Initialize: `i=0, j=0, maxLength=0, elementFreq={}`
+2. For each `j`:
+   - Add: `elementFreq[arr[j]]++`
+   - While `elementFreq.size() > 2`:
+     - Shrink: `elementFreq[arr[i]]--`
+     - Erase if zero: `if (elementFreq[arr[i]] == 0) erase`
+     - Move: `i++`
+   - Update: `maxLength = max(maxLength, j - i + 1)`
+3. Return `maxLength`
+
+**Code Quality**:
+- 250+ lines of detailed comments and explanation
+- Walkthrough trace showing all steps
+- Key insights highlighted
+- Comparison with other approaches
+- Ready-to-run with test cases
+
+**Best For**:
+- Learning and understanding the algorithm deeply
+- Interview preparation with full explanation
+- Teaching the sliding window technique
+- Reference implementation with extensive documentation
+
+### Complete Walkthrough Example (from solution_optimal_cpp.cpp)
+
+For array `[1, 2, 1, 2, 3]`:
+
+```
+j=0: Add 1 → {1:1}, size=1 ✓ Valid, window=[1], length=1
+j=1: Add 2 → {1:1, 2:1}, size=2 ✓ Valid, window=[1,2], length=2
+j=2: Add 1 → {1:2, 2:1}, size=2 ✓ Valid, window=[1,2,1], length=3
+j=3: Add 2 → {1:2, 2:2}, size=2 ✓ Valid, window=[1,2,1,2], length=4
+j=4: Add 3 → {1:2, 2:2, 3:1}, size=3 ✗ Invalid!
+     
+     Shrink:
+     - Remove arr[0]=1 → {1:1, 2:2, 3:1}, still size=3
+     - Move i=0→1
+     - Remove arr[1]=2 → {1:1, 2:1, 3:1}, still size=3
+     - Move i=1→2
+     - Remove arr[2]=1 → {2:1, 3:1}, size=2 ✓ Valid
+     - Move i=2→3
+     
+     window=[2,3], length=2
+
+Maximum: 4
+```
+
+### Python Implementation - Sliding Window with Conditional Movement (Smart Control)
+
+**File**: `solution.py`
+
+**Key Features**:
+- Uses `defaultdict(int)` for automatic zero initialization
+- **Conditional movement approach**: Different pointer movement based on constraint
+- If valid: expand right (`j+=1`)
+- If invalid: shrink from left AND expand right (`i+=1, j+=1`)
+
+**Algorithm Flow**:
+1. Initialize `i=0, j=0`
+2. While both pointers in bounds:
+   - Expand: `dic[arr[j]]+=1`
+   - If distinct count ≤ 2 (valid):
+     - Update max: `maxi = max(maxi, j-i+1)`
+     - Move right: `j+=1`
+   - Else (invalid):
+     - Shrink left: `dic[arr[i]]-=1, del if needed`
+     - Move both: `i+=1, j+=1`
+3. Final check: `maxi = max(maxi, j-i)`
+
+**Why This Flow**:
+- More intuitive: separate valid/invalid branches
+- Different actions based on state
+- Final check ensures capturing last valid window
+
+**Best For**:
+- Python interviews emphasizing clarity
+- When you want explicit separation of valid/invalid branches
+
+## Comparison of Code Implementations
 
 | Aspect | C++ (Map) | Python (defaultdict) |
 |--------|-----------|----------------------|
-| **Data Structure** | `map<int, int>` | `defaultdict(int)` |
-| **Time Complexity** | O(n log 2) = O(n) | O(n) |
-| **Space Complexity** | O(1) | O(1) |
-| **Insertion** | O(log 2) amortized | O(1) amortized |
-| **Deletion** | O(log 2) with erase() | Manual with del |
-| **Size Check** | `.size()` | `len(dict)` |
-| **Readability** | Standard STL | Pythonic |
-| **Best For** | C++ interviews | Python interviews |
+| **Control Flow** | Expand first, then shrink in while loop | Conditional: expand or shrink+expand |
+| **Pointer Movement** | Right always moves, left may move multiple times | Right moves based on validity |
+| **Map/Dict Operations** | `.size()` check, `.erase()` removal | `len()` check, `del` removal |
+| **Update Timing** | After while loop exits (window is valid) | Inside if block when valid |
+| **Final Check** | Not needed (loop handles it) | Needed: `max(maxi, j-i)` |
+| **Time Complexity** | O(n) with O(log 2) map operations | O(n) with O(1) dict operations |
+| **Space Complexity** | O(1) with ordered map | O(1) with hash dict |
+| **Code Length** | Compact (45 lines with comments) | Slightly longer (60+ lines with comments) |
+| **Readability** | Requires understanding while loop | Clear if/else branches |
+| **Interview Impact** | Shows STL mastery | Shows Pythonic thinking |
+
+## Why Both Approaches Are Equivalent
+
+Despite different control flows, **both achieve the same result**:
+- Both maintain constraint: at most 2 distinct elements
+- Both track maximum valid window size
+- Both run in O(n) time with O(1) space
+- Both guarantee finding the longest valid subarray
+
+The difference is purely implementation style:
+- **C++**: "Expand aggressively, then fix violations"
+- **Python**: "Check before expanding, act accordingly"
+
+Both are valid sliding window implementations with different organization of the same logic.
 
 ## Use Cases
 
