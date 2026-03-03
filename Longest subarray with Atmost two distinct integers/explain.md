@@ -164,6 +164,49 @@ Maximum length = 4
 - `defaultdict` eliminates explicit zero-checking
 - Concise and readable
 
+### Python Optimal Solution - Detailed Commentary Version with Sliding Window Magic
+
+**File**: `solution_optimal_python.py`
+
+**Enhanced Features**:
+- **Complete "Sliding Window Magic" explanation** with detailed intuition
+- 300+ lines of comprehensive comments and documentation
+- Variable names optimized for clarity: `low`, `high`, `mp`, `ans`
+- Detailed walkthrough example showing state at each iteration
+- Complete time and space complexity analysis with breakdown
+- Key insights and tricks highlighted (7 important techniques)
+- Algorithm steps summary
+- 6 comprehensive test cases with expected outputs
+- Runnable main function with test validation
+
+**Algorithm Flow** (detailed Pythonic version):
+1. Initialize: `low=0, high=0, mp={}, ans=0`
+2. While `high < len(arr)`:
+   - Expand: `mp[arr[high]] += 1`
+   - While `len(mp) > 2`:
+     - Shrink: `mp[arr[low]] -= 1`
+     - Delete if zero: `if mp[arr[low]] == 0: del mp[arr[low]]`
+     - Move: `low += 1`
+   - Update: `ans = max(ans, high - low + 1)`
+   - Expand: `high += 1`
+3. Return `ans`
+
+**Code Quality**:
+- 300+ lines of comprehensive documentation
+- Detailed walkthrough showing every state change
+- Time complexity: O(n) - each element at most twice
+- Space complexity: O(1) - at most 2-3 elements in map
+- Key insights: 7 techniques including monotonicity and amortized analysis
+- Generalizable: Change `len(mp) > 2` to `len(mp) > k` for k distinct
+- Test-driven with 6 edge case tests including single element
+
+**Best For**:
+- Deep understanding of sliding window technique
+- Learning "Sliding Window Magic" approach
+- Interview preparation with full explanations
+- Teaching and reference implementation
+- Understanding amortized time complexity
+
 ## Code Implementation Mapping
 
 ### C++ Implementation - Sliding Window with Map (Clean Expansion)
