@@ -1,16 +1,19 @@
-# DSA-prac: Daily Coding Solutions Repository
+# DailyCode: GFG POTD Solutions
 
 > A community-driven repository of **Data Structure & Algorithm** solutions for **GeeksforGeeks (GFG) Daily POTD (Problem of the Day)**. Solve problems daily, learn multiple approaches, and contribute to help others prepare for technical interviews.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![Problems Solved](https://img.shields.io/badge/problems%20solved-100%2B-blue)](./EASY)
+[![Platform](https://img.shields.io/badge/platform-GFG%20POTD-brightgreen)](https://www.geeksforgeeks.org/)
+
+> 🚀 **Future Plan**: Will expand to LeetCode, Codeforces, HackerRank, and more platforms soon!
 
 ---
 
 ## 🎯 About This Repository
 
-DSA-prac is a curated collection of **daily GFG POTD solutions** organized by difficulty level (Easy, Medium, Hard). Each problem includes:
+DailyCode is a curated collection of **daily GFG POTD solutions** organized by difficulty level (Easy, Medium, Hard). Each problem includes:
 - ✅ **Multiple Solutions** - Different approaches (brute force, optimized, etc.)
 - 📝 **Detailed Explanations** - Intuition, algorithm breakdown, and complexity analysis
 - 🔧 **Multi-language Support** - Solutions in C++ and Python
@@ -19,15 +22,28 @@ DSA-prac is a curated collection of **daily GFG POTD solutions** organized by di
 Perfect for:
 - 📚 **Interview Preparation** - Strengthen your DSA fundamentals
 - 🤝 **Learning Together** - Learn from multiple solution approaches
-- 🚀 **Consistent Practice** - Daily problem-solving habit
+- 🚀 **Consistent Practice** - Daily GFG POTD problem-solving habit
 - 🌟 **Contributing** - Share your knowledge with the community
+
+---
+
+## 🌐 Supported Platforms
+
+**Current Focus:**
+- [GeeksforGeeks POTD](https://www.geeksforgeeks.org/problem-of-the-day) - Daily Problems ✅
+
+**Coming Soon:**
+- [LeetCode](https://leetcode.com/) - Premium problems & company-specific questions
+- [Codeforces](https://codeforces.com/) - Competitive programming
+- [HackerRank](https://www.hackerrank.com/) - Structured learning paths
+- [And more!](#)
 
 ---
 
 ## 📂 Repository Structure
 
 ```
-DSA-prac/
+DailyCode/
 ├── EASY/
 │   ├── Problem 1/
 │   │   ├── explain.md          # Problem explanation & approach
@@ -52,8 +68,9 @@ DSA-prac/
 ### How to Navigate
 
 - **By Difficulty**: Pick a folder (EASY/MEDIUM/HARD) based on your level
-- **By Problem**: Each folder contains a unique problem with complete solution
+- **By Problem**: Each folder contains a unique GFG POTD with complete solution
 - **Learning Path**: Start with EASY, progress to MEDIUM, then HARD
+- **Topic-based**: Use the problems to learn and master DSA concepts
 
 ---
 
@@ -61,8 +78,8 @@ DSA-prac/
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/DSA-prac.git
-cd DSA-prac
+git clone https://github.com/yourusername/DailyCode.git
+cd DailyCode
 ```
 
 ### 2. Browse Solutions
@@ -168,6 +185,8 @@ We ❤️ contributions! Help us grow this repository and make DSA preparation e
 - 🐛 **Fix Issues** - Found a bug? Report or fix it
 - 📚 **Improve Docs** - Better explanations? Let's improve together
 - 🎯 **Add Comparisons** - Multiple approaches for same problem
+- 🏷️ **Create Topic Index** - Organize by DSA concepts
+- 🚀 **Platform Expansion** - Help setup for LeetCode, Codeforces, etc.
 
 ### Code of Conduct
 - Be respectful and constructive
@@ -187,6 +206,8 @@ Current Status:
 - 🚀 Hard Problems: Being Added
 
 Last Updated: March 2026
+
+> 🔮 **Future**: Multi-platform support coming soon!
 
 ---
 
@@ -228,14 +249,23 @@ A: Daily! We solve the GFG POTD and add solutions here.
 **Q: Can I contribute?**
 A: Absolutely! See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
+**Q: Will you add problems from other platforms?**
+A: Yes! We're planning to expand to LeetCode, Codeforces, HackerRank soon. Stay tuned!
+
 ---
 
 ## 📚 Learning Resources
 
-Recommended platforms:
-- [GeeksforGeeks](https://www.geeksforgeeks.org/) - Daily POTD
-- [LeetCode](https://leetcode.com/) - Problem practice
-- [Codeforces](https://codeforces.com/) - Competitive programming
+**Problem Platforms (Primary & Future):**
+- [GeeksforGeeks POTD](https://www.geeksforgeeks.org/problem-of-the-day/) - Daily problems (Current)
+- [LeetCode](https://leetcode.com/) - Premium problems & company questions (Planned)
+- [Codeforces](https://codeforces.com/) - Competitive programming (Planned)
+- [HackerRank](https://www.hackerrank.com/) - Guided learning paths (Planned)
+
+**Learning Guides:**
+- [GeeksforGeeks DSA](https://www.geeksforgeeks.org/data-structures/) - Comprehensive DSA guide
+- [AlgoExpert](https://www.algoexpert.io/) - Video explanations
+- [JavaScript Algorithms](https://github.com/trekhleb/javascript-algorithms) - Algorithm implementations
 
 ---
 
@@ -266,7 +296,7 @@ If this repository helps you in your DSA journey, please:
 ## Contributors
 
 <a href="../../graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=yourusername/DSA-prac" />
+  <img src="https://contrib.rocks/image?repo=yourusername/DailyCode" />
 </a>
 
 ---
