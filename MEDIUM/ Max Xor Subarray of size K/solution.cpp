@@ -1,25 +1,25 @@
 class Solution {
   public:
     int maxSubarrayXOR(vector<int>& arr, int k) {
-        // code here
         int n = arr.size();
-        int maxXor = INT_MIN;
-        int currentXor = arr[0];
         
-        int l = 0, r = 1;
-        while(l<=n-k){
-            if(r-l+1 > k){
-                maxXor = max(maxXor, currentXor);
-                currentXor ^= arr[l];
-                l++;
-            }
-            currentXor ^= arr[r];
-            r+=1;
+        // Calculate XOR of first window
+        int currentXor = 0;
+        for(int i = 0; i < k; i++) {
+            currentXor ^= arr[i];
         }
-        if(maxXor == INT_MIN){
-            return currentXor;
+        
+        int maxXor = currentXor;
+        
+        // Slide the window and update XOR
+        for(int i = k; i < n; i++) {
+            // Remove the leftmost element of previous window
+            currentXor ^= arr[i - k];
+            // Add the new rightmost element
+            currentXor ^= arr[i];
+            maxXor = max(maxXor, currentXor);
         }
+        
         return maxXor;
     }
-
 };
