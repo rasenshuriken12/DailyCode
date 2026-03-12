@@ -204,6 +204,17 @@ The algorithm correctly counts **5** valid subarrays where the first element is 
 
 ---
 
+## 🧪 Edge Cases
+
+| Case | Input | Expected | Explanation |
+|------|-------|----------|-------------|
+| **Single element** | [5] | 1 | Only [5] |
+| **All equal** | [2,2,2] | 3 | Each element: [2], [2], [2] (length 1 only) |
+| **Strictly increasing** | [1,2,3,4] | 4 | Each element alone: [1], [2], [3], [4] |
+| **Strictly decreasing** | [4,3,2,1] | 10 | 4+3+2+1 = 10 (each can extend to end) |
+
+---
+
 ## 📝 Alternative Approaches
 
 ### 1. Brute Force (O(n²)) - Too Slow
